@@ -7,7 +7,6 @@ class List extends Component {
     super(props);
     this.state = {
       addingNewCard: false,
-      editingCard: false,
       tempCardText: ''
     }
     this.handleAddCardClick = this.handleAddCardClick.bind(this);
@@ -56,6 +55,7 @@ class List extends Component {
                       canMoveRight={this.props.data.canMoveRight}
                       handleMoveCardLeft={() => this.props.handleMoveCardLeft(index) }
                       handleMoveCardRight={() => this.props.handleMoveCardRight(index) }
+                      handleUpdateCard={(text) => this.props.handleUpdateCard(index, text) }
                      />
             })}
           </div>

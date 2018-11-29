@@ -106,6 +106,18 @@ class Board extends React.Component {
     }))
   }
 
+  handleUpdateCard(column_i, card_i, text) {
+    let updatedCard = { text }
+    let updatedCardsArr = this.state[column_i].cards.slice()
+    updatedCardsArr.splice(card_i, 1, updatedCard)
+    this.setState(prevState => ({
+      [column_i]: {
+        ...prevState[column_i],
+        cards: updatedCardsArr
+      }
+    }))
+  }
+
   render() {
     return (
       <div className="board">
@@ -115,6 +127,7 @@ class Board extends React.Component {
           handleCreateCard={(text) => this.handleCreateCard(1, text) }
           handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(1, card_i) }
           handleMoveCardRight={(card_i) => this.handleMoveCardRight(1, card_i) }
+          handleUpdateCard={(card_i, text) => this.handleUpdateCard(1, card_i, text) }
         />
         <Column
           data={this.state[2]}
@@ -122,6 +135,7 @@ class Board extends React.Component {
           handleCreateCard={(text) => this.handleCreateCard(2, text) }
           handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(2, card_i) }
           handleMoveCardRight={(card_i) => this.handleMoveCardRight(2, card_i) }
+          handleUpdateCard={(card_i, text) => this.handleUpdateCard(2, card_i, text) }
         />
         <Column
           data={this.state[3]}
@@ -129,6 +143,7 @@ class Board extends React.Component {
           handleCreateCard={(text) => this.handleCreateCard(3, text) }
           handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(3, card_i) }
           handleMoveCardRight={(card_i) => this.handleMoveCardRight(3, card_i) }
+          handleUpdateCard={(card_i, text) => this.handleUpdateCard(3, card_i, text) }
         />
       </div>
     );

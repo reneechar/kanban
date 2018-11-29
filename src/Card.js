@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import './Card.css';
 
 class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editingCard: false,
+      tempCardText: ''
+    }
+    this.handleCardClick = this.handleCardClick.bind(this)
+    this.handleCardTextUpdate = this.handleCardTextUpdate.bind(this)
+    this.handleUpdateCard = this.handleUpdateCard.bind(this)
+  }
+
+  handleCardClick() {
+    this.setState({editingCard: !this.state.editingCard})
+  }
+
+  handleCardTextUpdate(e) {
+    this.setState({tempCardText: e.target.value})
+  }
+
+  handleUpdateCard() {
+    this.props.handleUpdateCard(this.state.tempCardText);
+    this.setState({editingCard: false, tempCardText: ''})
+  }
 
   render() {
     let moveLeftButton = ''
@@ -12,19 +35,29 @@ class Card extends Component {
     if (this.props.canMoveRight) {
       moveRightButton = (<button onClick={this.props.handleMoveCardRight}>&gt;</button>)
     }
-    return (
-      <div className="card">
-        <div className='left'>
-          { moveLeftButton }
+    if (this.state.editingCard) {
+      return (
+        <div className="card">
+          <textarea onChange={this.handleCardTextUpdate}>{this.props.text}</textarea>
+          <button onClick={ this.handleUpdateCard }>Save</button>
         </div>
-        <div className="card-text">
-          {this.props.text}
+      );
+    } else {
+      return (
+        <div className="card" onClick={this.handleCardClick}>
+          <div className='left'>
+            { moveLeftButton }
+          </div>
+          <div className="card-text">
+            {this.props.text}
+          </div>
+          <div className='right'>
+            { moveRightButton }
+          </div>
         </div>
-        <div className='right'>
-          { moveRightButton }
-        </div>
-      </div>
-    );
+      );
+    }
+
   }
 }
 
