@@ -22,21 +22,19 @@ class Column extends React.Component {
   }
 
   handleCreateList(e) {
-    e.preventDefault();
     this.props.handleCreateList(this.state.tempListName);
     this.setState({editingListName: false, tempListName: ''})
-    console.log('here')
   }
 
+
   render() {
-    console.log('list name', this.props)
     if (this.props.data.listName === null) {
       if (this.state.editingListName) {
         return (
           <div className="column">
             <div className="add-list">
               <input type="text" onChange={ this.handleListNameChange } />
-              <button onClick={ this.handleCreateList }>Add</button>
+              <button onClick={ this.handleCreateList }>Save</button>
             </div>
           </div>
         )
@@ -54,6 +52,7 @@ class Column extends React.Component {
         <div className="column">
           <List
             data={this.props.data}
+            handleCreateCard={ (text) => this.props.handleCreateCard(text) }
           />
         </div>
       )

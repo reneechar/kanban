@@ -29,21 +29,33 @@ class Board extends React.Component {
     }))
   }
 
+  handleCreateCard(i, text) {
+    let newCard = { text }
+    this.setState(prevState => ({
+      [i]: {
+        ...prevState[i],
+        cards: [...prevState[i].cards, newCard]
+      }
+    }))
+  }
+
   render() {
-    console.log('state board ', this.state)
     return (
       <div className="board">
         <Column
           data={this.state[1]}
           handleCreateList={(name) => this.handleCreateList(1, name) }
+          handleCreateCard={(text) => this.handleCreateCard(1, text) }
         />
         <Column
           data={this.state[2]}
           handleCreateList={(name) => this.handleCreateList(2, name) }
+          handleCreateCard={(text) => this.handleCreateCard(2, text) }
         />
         <Column
           data={this.state[3]}
           handleCreateList={(name) => this.handleCreateList(3, name) }
+          handleCreateCard={(text) => this.handleCreateCard(3, text) }
         />
       </div>
     );
