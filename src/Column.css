@@ -1,3 +1,26 @@
 .column {
   flex: 0 0 30%;
 }
+
+.add-card.editing {
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin: 20px 5px;
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.add-list.editing {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px;
+}
+
+.add-list input {
+  flex: 0 0 100%;
+  margin-bottom:10px;
+  height: 30px;
+  font-size: 14px;
+}

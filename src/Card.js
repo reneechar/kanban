@@ -22,7 +22,9 @@ class Card extends Component {
   }
 
   handleUpdateCard() {
-    this.props.handleUpdateCard(this.state.tempCardText);
+    if (this.state.tempCardText !== '') {
+      this.props.handleUpdateCard(this.state.tempCardText);
+    }
     this.setState({editingCard: false, tempCardText: ''})
   }
 
@@ -37,14 +39,14 @@ class Card extends Component {
     }
     if (this.state.editingCard) {
       return (
-        <div className="card">
+        <div className="card editing">
           <textarea onChange={this.handleCardTextUpdate}>{this.props.text}</textarea>
           <button onClick={ this.handleUpdateCard }>Save</button>
         </div>
       );
     } else {
       return (
-        <div className="card" onClick={this.handleCardClick}>
+        <div className="card clickable" onClick={this.handleCardClick}>
           <div className='left'>
             { moveLeftButton }
           </div>

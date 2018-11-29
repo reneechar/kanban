@@ -1,17 +1,40 @@
 .card {
+  text-align: left;
   border: 1px solid black;
-  margin: 20px;
+  border-radius: 12px;
+  margin: 20px 5px;
   padding: 20px;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.card.editing {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.card.clickable {
+  cursor: text;
+}
+
+.card-text {
+  padding: 0 10px;
 }
 
 .left {
-  flex: 0 0 10%;
+  flex: 0 0 7%;
+}
+
+.left button, .right button {
+  padding: 5px 10px;
+  background-color: #eee;
+  color: #000;
 }
 
 .right {
-  flex: 0 0 10%;
+  flex: 0 0 7%;
 }
 
 .card-text {

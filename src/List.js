@@ -37,7 +37,7 @@ class List extends Component {
               return <Card text={card.text} index={index} />
             })}
           </div>
-          <div className="add-card">
+          <div className="add-card editing">
             <textarea onChange={ this.handleCardTextUpdate }></textarea>
             <button onClick={ this.handleCreateCard }>Save</button>
           </div>

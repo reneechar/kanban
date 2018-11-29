@@ -3,3 +3,24 @@
   flex-flow: row nowrap;
   justify-content: center;
 }
+
+button {
+  padding: 10px 30px;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: #33cc33;
+  color: #fff;
+  border: none;
+}
+
+button:hover, button:active, button:focus {
+  cursor: pointer;
+}
+
+.editing textarea {
+  flex: 0 0 100%;
+  margin-bottom: 10px;
+  height: 70px;
+  font-size: 14px;
+}
+

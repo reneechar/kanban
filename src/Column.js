@@ -32,8 +32,8 @@ class Column extends React.Component {
       if (this.state.editingListName) {
         return (
           <div className="column">
-            <div className="add-list">
-              <input type="text" onChange={ this.handleListNameChange } />
+            <div className="add-list editing">
+              <input type="text" onChange={ this.handleListNameChange } placeholder='List Name' />
               <button onClick={ this.handleCreateList }>Save</button>
             </div>
           </div>
