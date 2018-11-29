@@ -7,15 +7,15 @@ class Board extends React.Component {
     super(props)
     this.state = {
       1: {
-        listName: 'l1',
-        cards: [{text: 'this'}, {text: 'that'}],
+        listName: null,
+        cards: [],
         canMoveLeft: false,
         canMoveRight: false,
       },
       2: {
         listName: null,
         cards: [],
-        canMoveLeft: true,
+        canMoveLeft: false,
         canMoveRight: false,
       },
       3: {

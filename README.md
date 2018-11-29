@@ -4,10 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 You’ll need to have Node 8.10.0 or later on your local development machine
 
-## Available Scripts
+## Installation
+### `npm i`
+Installs dependencies.
 
-In the project directory, you can run:
-
+## Run application
 ### `npm start`
 
 Runs the app in the development mode.<br>
