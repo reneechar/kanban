@@ -6,28 +6,44 @@ class Board extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      columns: [ {name: null}, { name: null}, { name: null} ]
+      1: {
+        listName: null,
+        cards: []
+      },
+      2: {
+        listName: null,
+        cards: []
+      },
+      3: {
+        listName: null,
+        cards: []
+      }
     }
   }
-  handleAdd(i, name) {
-    let columnData = this.state.columns[i]
-    this.setState({...columnData, name: name})
+  handleCreateList(i, name) {
+    this.setState(prevState => ({
+      [i]: {
+        ...prevState[i],
+        listName: name
+      }
+    }))
   }
 
   render() {
+    console.log('state board ', this.state)
     return (
       <div className="board">
         <Column
-          value={this.state.columns[0]}
-          handleAdd={() => this.handleAdd(0) }
+          data={this.state[1]}
+          handleCreateList={(name) => this.handleCreateList(1, name) }
         />
         <Column
-          value={this.state.columns[1]}
-          handleAdd={() => this.handleAdd(1) }
+          data={this.state[2]}
+          handleCreateList={(name) => this.handleCreateList(2, name) }
         />
         <Column
-          value={this.state.columns[2]}
-          handleAdd={() => this.handleAdd(2) }
+          data={this.state[3]}
+          handleCreateList={(name) => this.handleCreateList(3, name) }
         />
       </div>
     );
