@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './Card.css';
 
 class Card extends Component {
+
   render() {
     let moveLeftButton = ''
     let moveRightButton = ''
     if (this.props.canMoveLeft) {
-      moveLeftButton = (<button>&lt;</button>)
+      moveLeftButton = (<button onClick={this.props.handleMoveCardLeft}>&lt;</button>)
     }
     if (this.props.canMoveRight) {
-      moveRightButton = (<button>&gt;</button>)
+      moveRightButton = (<button onClick={this.props.handleMoveCardRight}>&gt;</button>)
     }
     return (
       <div className="card">

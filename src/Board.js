@@ -9,20 +9,20 @@ class Board extends React.Component {
       1: {
         listName: 'l1',
         cards: [{text: 'this'}, {text: 'that'}],
-        canMoveRight: false,
         canMoveLeft: false,
+        canMoveRight: false,
       },
       2: {
         listName: null,
         cards: [],
-        canMoveRight: false,
         canMoveLeft: true,
+        canMoveRight: false,
       },
       3: {
         listName: null,
         cards: [],
-        canMoveRight: false,
         canMoveLeft: false,
+        canMoveRight: false,
       }
     }
     this.updateCardMovingOptions = this.updateCardMovingOptions.bind(this);
@@ -76,6 +76,36 @@ class Board extends React.Component {
     }))
   }
 
+  handleMoveCardLeft(column_i, card_i) {
+    let movingCard = this.state[column_i].cards[card_i]
+
+    this.setState(prevState => ({
+      [column_i]: {
+        ...prevState[column_i],
+        cards: prevState[column_i].cards.slice(0, card_i).concat(prevState[column_i].cards.slice(card_i + 1))
+      },
+      [column_i - 1]: {
+        ...prevState[column_i - 1],
+        cards: [...prevState[column_i - 1].cards, movingCard]
+      }
+    }))
+  }
+
+  handleMoveCardRight(column_i, card_i) {
+    let movingCard = this.state[column_i].cards[card_i]
+
+    this.setState(prevState => ({
+      [column_i]: {
+        ...prevState[column_i],
+        cards: prevState[column_i].cards.slice(0, card_i).concat(prevState[column_i].cards.slice(card_i + 1))
+      },
+      [column_i + 1]: {
+        ...prevState[column_i + 1],
+        cards: [...prevState[column_i + 1].cards, movingCard]
+      }
+    }))
+  }
+
   render() {
     return (
       <div className="board">
@@ -83,16 +113,22 @@ class Board extends React.Component {
           data={this.state[1]}
           handleCreateList={(name) => this.handleCreateList(1, name) }
           handleCreateCard={(text) => this.handleCreateCard(1, text) }
+          handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(1, card_i) }
+          handleMoveCardRight={(card_i) => this.handleMoveCardRight(1, card_i) }
         />
         <Column
           data={this.state[2]}
           handleCreateList={(name) => this.handleCreateList(2, name) }
           handleCreateCard={(text) => this.handleCreateCard(2, text) }
+          handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(2, card_i) }
+          handleMoveCardRight={(card_i) => this.handleMoveCardRight(2, card_i) }
         />
         <Column
           data={this.state[3]}
           handleCreateList={(name) => this.handleCreateList(3, name) }
           handleCreateCard={(text) => this.handleCreateCard(3, text) }
+          handleMoveCardLeft={(card_i) => this.handleMoveCardLeft(3, card_i) }
+          handleMoveCardRight={(card_i) => this.handleMoveCardRight(3, card_i) }
         />
       </div>
     );

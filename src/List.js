@@ -34,8 +34,8 @@ class List extends Component {
         <div className="list">
           <h3>{this.props.data.listName}</h3>
           <div className="cards-container">
-            {this.props.data.cards.map(card => {
-              return <Card text={card.text} />
+            {this.props.data.cards.map((card,index) => {
+              return <Card text={card.text} index={index} />
             })}
           </div>
           <div className="add-card">
@@ -49,11 +49,13 @@ class List extends Component {
         <div className="list">
           <h3>{this.props.data.listName}</h3>
           <div className="cards-container">
-            {this.props.data.cards.map(card => {
+            {this.props.data.cards.map((card, index) => {
               return <Card
                       text={card.text}
                       canMoveLeft={this.props.data.canMoveLeft}
                       canMoveRight={this.props.data.canMoveRight}
+                      handleMoveCardLeft={() => this.props.handleMoveCardLeft(index) }
+                      handleMoveCardRight={() => this.props.handleMoveCardRight(index) }
                      />
             })}
           </div>

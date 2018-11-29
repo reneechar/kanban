@@ -53,6 +53,8 @@ class Column extends React.Component {
           <List
             data={this.props.data}
             handleCreateCard={ (text) => this.props.handleCreateCard(text) }
+            handleMoveCardLeft={(card_i) => this.props.handleMoveCardLeft(card_i) }
+            handleMoveCardRight={(card_i) => this.props.handleMoveCardRight(card_i) }
           />
         </div>
       )
