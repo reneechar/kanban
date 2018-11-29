@@ -2,4 +2,18 @@
   border: 1px solid black;
   margin: 20px;
   padding: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.left {
+  flex: 0 0 10%;
+}
+
+.right {
+  flex: 0 0 10%;
+}
+
+.card-text {
+  flex: 0 0 80%;
 }

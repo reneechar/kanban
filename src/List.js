@@ -50,7 +50,11 @@ class List extends Component {
           <h3>{this.props.data.listName}</h3>
           <div className="cards-container">
             {this.props.data.cards.map(card => {
-              return <Card text={card.text} />
+              return <Card
+                      text={card.text}
+                      canMoveLeft={this.props.data.canMoveLeft}
+                      canMoveRight={this.props.data.canMoveRight}
+                     />
             })}
           </div>
           <div className="add-card">
